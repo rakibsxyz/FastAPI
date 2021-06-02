@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+pydantic
+sqlalchemy
+async-exit-stack async-generator
