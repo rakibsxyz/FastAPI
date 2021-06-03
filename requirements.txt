@@ -2,4 +2,6 @@ fastapi
 uvicorn
 pydantic
 sqlalchemy
-async-exit-stack async-generator
+passlib
+bcrypt
+# async-exit-stack async-generator
