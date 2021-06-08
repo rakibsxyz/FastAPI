@@ -1,9 +1,9 @@
 
 from fastapi import FastAPI
 from sqlalchemy import log
-from . import  models
-from . database import  engine
-from .routers    import blog, user, login
+from blog import  models
+from blog.database import  engine
+from blog.routers import blog, user, login
 
 
 app = FastAPI()

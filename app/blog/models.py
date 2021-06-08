@@ -1,4 +1,4 @@
-import blog
+
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import ForeignKey
