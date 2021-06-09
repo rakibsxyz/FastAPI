@@ -5,6 +5,8 @@ from typing import List
 from sqlalchemy.orm import Session
 from .. repository import blog
 
+from fastapi_pagination import Page, add_pagination, paginate
+
 
 
 router = APIRouter(
@@ -15,9 +17,9 @@ router = APIRouter(
 
 get_db = database.get_db
 
-@router.get('/',status_code=status.HTTP_200_OK, response_model= List[schemas.ShowBlog])
+@router.get('/',status_code=status.HTTP_200_OK, response_model= Page[schemas.ShowBlog])
 def showAllBlog(db: Session = Depends(database.get_db), getCurrentUser: schemas.User =Depends(oauth2.get_current_user)):
-    return blog.showAll(db)  
+    return paginate(blog.showAll(db)) 
 
 
 @router.post('/',status_code=status.HTTP_201_CREATED )
@@ -39,3 +41,4 @@ def getSpecificBlog(id, db: Session = Depends(get_db),getCurrentUser: schemas.Us
 def deleteBlog(id, db : Session = Depends(get_db), getCurrentUser: schemas.User =Depends(oauth2.get_current_user)):
     return blog.delete(id, db)
    
+add_pagination(router)
